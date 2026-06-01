@@ -118,7 +118,7 @@ const goToday = () => {
         :class="{
           'other-month': day.type !== 'current',
           'is-today': isToday(day),
-          'is-selected': isSelected(day),
+          'is-selected': isSelected(day)
         }"
         @click="selectDate(day)"
       >
@@ -130,22 +130,19 @@ const goToday = () => {
 
 <style scoped>
 .calendar {
-  max-width: 400px;
-  margin: 0 auto;
-  background: var(--color-background-soft, #f8f8f8);
-  border-radius: 12px;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  user-select: none;
+  background: var(--color-background);
 }
 
 .calendar-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
-  background: #42b883;
-  color: #fff;
+  align-items: center;
+  padding: 16px;
+  background: var(--color-background-soft);
 }
 
 .header-center {
@@ -157,107 +154,63 @@ const goToday = () => {
 .month-title {
   font-size: 18px;
   font-weight: 600;
-  letter-spacing: 1px;
 }
 
-.nav-btn {
-  width: 36px;
-  height: 36px;
-  border: none;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  font-size: 18px;
+.nav-btn, .today-btn {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 4px 12px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
+  color: var(--color-text);
 }
 
-.nav-btn:hover {
-  background: rgba(255, 255, 255, 0.4);
-}
-
-.today-btn {
-  padding: 2px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 14px;
-  background: transparent;
-  color: #fff;
-  font-size: 13px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.today-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+.nav-btn:hover, .today-btn:hover {
+  background: var(--color-background-mute);
 }
 
 .calendar-weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  background: var(--color-background, #fff);
-  border-bottom: 1px solid var(--color-border, #eee);
+  background: var(--color-background-mute);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .weekday {
+  padding: 8px;
   text-align: center;
-  padding: 10px 0;
-  font-size: 13px;
   font-weight: 600;
-  color: var(--vt-c-text-light-2, #888);
+  font-size: 14px;
 }
 
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  background: var(--color-background, #fff);
 }
 
 .day-cell {
+  padding: 12px;
   text-align: center;
-  padding: 10px 0;
-  font-size: 14px;
   cursor: pointer;
-  border-radius: 8px;
-  margin: 2px;
-  transition: background 0.15s, color 0.15s;
-  color: var(--color-text, #333);
+  border: 1px solid transparent;
 }
 
 .day-cell:hover {
-  background: rgba(66, 184, 131, 0.15);
+  background: var(--color-background-mute);
 }
 
-.day-cell.other-month {
-  color: var(--color-border, #ccc);
-  cursor: default;
+.other-month {
+  color: #ccc;
 }
 
-.day-cell.other-month:hover {
-  background: transparent;
+.is-today {
+  font-weight: bold;
+  color: #42b883;
 }
 
-.day-cell.is-today {
+.is-selected {
   background: #42b883;
-  color: #fff;
-  font-weight: 700;
+  color: white;
   border-radius: 50%;
-}
-
-.day-cell.is-today:hover {
-  background: #38a373;
-}
-
-.day-cell.is-selected {
-  background: rgba(66, 184, 131, 0.25);
-  color: #2c3e50;
-  font-weight: 600;
-}
-
-.day-cell.is-selected.is-today {
-  background: #42b883;
-  color: #fff;
 }
 </style>
