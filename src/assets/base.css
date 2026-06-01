@@ -23,30 +23,30 @@
 
 /* semantic color variables for this project */
 :root {
-  --color-background: #FFEB3B;
-  --color-background-soft: #FFF9C4;
-  --color-background-mute: #FBC02D;
+  --color-background: #000000;
+  --color-background-soft: #1a1a1a;
+  --color-background-mute: #333333;
 
   --color-border: var(--vt-c-divider-light-2);
   --color-border-hover: var(--vt-c-divider-light-1);
 
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
+  --color-heading: #ffffff;
+  --color-text: #e0e0e0;
 
   --section-gap: 160px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: #FDD835;
-    --color-background-soft: #FFEE58;
-    --color-background-mute: #F9A825;
+    --color-background: #000000;
+    --color-background-soft: #1a1a1a;
+    --color-background-mute: #333333;
 
     --color-border: var(--vt-c-divider-dark-2);
     --color-border-hover: var(--vt-c-divider-dark-1);
 
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
+    --color-heading: #ffffff;
+    --color-text: #e0e0e0;
   }
 }
 
