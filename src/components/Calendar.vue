@@ -102,6 +102,7 @@ const goToday = () => {
       <div class="header-center">
         <span class="month-title">{{ currentYear }}年 {{ monthNames[currentMonth] }}</span>
         <button class="today-btn" @click="goToday">今天</button>
+        <button class="dummy-btn">按钮</button>
       </div>
       <button class="nav-btn" @click="nextMonth">&gt;</button>
     </div>
@@ -118,7 +119,7 @@ const goToday = () => {
         :class="{
           'other-month': day.type !== 'current',
           'is-today': isToday(day),
-          'is-selected': isSelected(day),
+          'is-selected': isSelected(day)
         }"
         @click="selectDate(day)"
       >
@@ -130,134 +131,125 @@ const goToday = () => {
 
 <style scoped>
 .calendar {
-  max-width: 400px;
-  margin: 0 auto;
-  background: var(--color-background-soft, #f8f8f8);
+  width: 100%;
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  user-select: none;
+  padding: 20px;
+  backdrop-filter: blur(10px);
 }
 
 .calendar-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
-  background: #42b883;
-  color: #fff;
+  margin-bottom: 16px;
 }
 
 .header-center {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .month-title {
   font-size: 18px;
   font-weight: 600;
-  letter-spacing: 1px;
+  color: #fff;
 }
 
 .nav-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #fff;
   width: 36px;
   height: 36px;
-  border: none;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  font-size: 18px;
   cursor: pointer;
+  font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s;
+  transition: background 0.3s;
 }
 
 .nav-btn:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .today-btn {
-  padding: 2px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 14px;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
   color: #fff;
-  font-size: 13px;
+  padding: 4px 12px;
+  border-radius: 16px;
   cursor: pointer;
-  transition: background 0.2s;
+  font-size: 13px;
+  transition: background 0.3s;
 }
 
 .today-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.dummy-btn {
   background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dummy-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .calendar-weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  background: var(--color-background, #fff);
-  border-bottom: 1px solid var(--color-border, #eee);
+  margin-bottom: 8px;
 }
 
 .weekday {
   text-align: center;
-  padding: 10px 0;
   font-size: 13px;
-  font-weight: 600;
-  color: var(--vt-c-text-light-2, #888);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 8px 0;
 }
 
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  background: var(--color-background, #fff);
 }
 
 .day-cell {
   text-align: center;
   padding: 10px 0;
-  font-size: 14px;
+  border-radius: 50%;
   cursor: pointer;
-  border-radius: 8px;
-  margin: 2px;
-  transition: background 0.15s, color 0.15s;
-  color: var(--color-text, #333);
+  color: #fff;
+  font-size: 14px;
+  transition: background 0.2s;
 }
 
 .day-cell:hover {
-  background: rgba(66, 184, 131, 0.15);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .day-cell.other-month {
-  color: var(--color-border, #ccc);
-  cursor: default;
-}
-
-.day-cell.other-month:hover {
-  background: transparent;
+  color: rgba(255, 255, 255, 0.35);
 }
 
 .day-cell.is-today {
-  background: #42b883;
-  color: #fff;
+  background: rgba(255, 255, 255, 0.25);
   font-weight: 700;
-  border-radius: 50%;
-}
-
-.day-cell.is-today:hover {
-  background: #38a373;
 }
 
 .day-cell.is-selected {
-  background: rgba(66, 184, 131, 0.25);
-  color: #2c3e50;
-  font-weight: 600;
-}
-
-.day-cell.is-selected.is-today {
-  background: #42b883;
-  color: #fff;
+  background: #fff;
+  color: #2196F3;
+  font-weight: 700;
 }
 </style>
