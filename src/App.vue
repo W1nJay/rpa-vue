@@ -1,5 +1,24 @@
 <script setup>
 import Calendar from './components/Calendar.vue'
+import { ref } from 'vue'
+
+const colors = [
+  { name: '黑色', value: '#000000' },
+  { name: '深蓝', value: '#0a192f' },
+  { name: '深绿', value: '#0d2818' },
+  { name: '深红', value: '#2a0a0a' },
+  { name: '深紫', value: '#1a0a2e' },
+  { name: '靛青', value: '#0c2340' },
+  { name: '深棕', value: '#1a0f0a' },
+  { name: '墨色', value: '#1a1a2e' },
+]
+
+const colorIndex = ref(0)
+
+const switchColor = () => {
+  colorIndex.value = (colorIndex.value + 1) % colors.length
+  document.documentElement.style.setProperty('--color-background', colors[colorIndex.value].value)
+}
 </script>
 
 <template>
@@ -10,6 +29,9 @@ import Calendar from './components/Calendar.vue'
       <div class="rainbow"></div>
       <div class="sun sun-right"></div>
     </div>
+    <button class="switch-color-btn" @click="switchColor">
+      🎨 切换背景色 ({{ colors[colorIndex].name }})
+    </button>
     <Calendar />
   </div>
 </template>
@@ -98,5 +120,28 @@ import Calendar from './components/Calendar.vue'
 .sun-right {
   right: 15px;
   top: 15px;
+}
+
+.switch-color-btn {
+  padding: 10px 24px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.switch-color-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.switch-color-btn:active {
+  transform: scale(0.95);
 }
 </style>
