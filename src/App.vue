@@ -23,6 +23,10 @@ const switchColor = () => {
 
 <template>
   <div class="app-container">
+    <div class="sun-corner">
+      <div class="sun-core"></div>
+      <div class="sun-ray" v-for="i in 12" :key="i" :style="{ transform: `rotate(${i * 30}deg)` }"></div>
+    </div>
     <h1 class="app-title">日历</h1>
     <div class="rainbow-container">
       <div class="sun sun-left"></div>
@@ -42,6 +46,7 @@ const switchColor = () => {
   flex-direction: column;
   align-items: center;
   padding-top: 40px;
+  position: relative;
 }
 
 .app-title {
@@ -122,6 +127,41 @@ const switchColor = () => {
   top: 15px;
 }
 
+.sun-corner {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  z-index: 1000;
+}
+
+.sun-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFF9C4, #FFD700, #FFA000);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 165, 0, 0.3);
+  z-index: 2;
+}
+
+.sun-ray {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform-origin: 50% 30px;
+  width: 3px;
+  height: 12px;
+  margin-left: -1.5px;
+  background: linear-gradient(to top, rgba(255, 215, 0, 0.8), rgba(255, 215, 0, 0));
+  border-radius: 2px;
+  z-index: 1;
+}
+
 .switch-color-btn {
   padding: 10px 24px;
   margin-bottom: 20px;
@@ -139,9 +179,5 @@ const switchColor = () => {
   background: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
   transform: scale(1.05);
-}
-
-.switch-color-btn:active {
-  transform: scale(0.95);
 }
 </style>
