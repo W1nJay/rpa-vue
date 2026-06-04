@@ -27,10 +27,6 @@ const switchColor = () => {
       <div class="moon-body"></div>
       <div class="moon-shadow"></div>
     </div>
-    <div class="sun-corner">
-      <div class="sun-core"></div>
-      <div class="sun-ray" v-for="i in 12" :key="i" :style="{ transform: `rotate(${i * 30}deg)` }"></div>
-    </div>
     <h1 class="app-title">日历</h1>
     <div class="rainbow-container">
       <div class="sun sun-left"></div>
@@ -129,88 +125,5 @@ const switchColor = () => {
 .sun-right {
   right: 15px;
   top: 15px;
-}
-
-.sun-corner {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  z-index: 1000;
-}
-
-.sun-core {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #FFF9C4, #FFD700, #FFA000);
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-}
-
-.sun-ray {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 2px;
-  height: 60px;
-  transform-origin: center center;
-  background: linear-gradient(to bottom, transparent, #FFD700, transparent);
-  margin-left: -1px;
-  margin-top: -30px;
-}
-
-.moon-corner {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  width: 60px;
-  height: 60px;
-  z-index: 1000;
-}
-
-.moon-body {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 65% 35%, #FFF9C4, #E8E8D0, #C0C0B0);
-  box-shadow: 0 0 20px rgba(255, 255, 200, 0.5), 0 0 40px rgba(200, 200, 255, 0.3);
-}
-
-.moon-shadow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-25%, -60%);
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: var(--color-background);
-  transition: background 0.5s;
-}
-
-.switch-color-btn {
-  padding: 10px 20px;
-  border: 1px solid var(--color-border);
-  background: var(--color-background-mute);
-  color: var(--color-text);
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 14px;
-  margin-bottom: 24px;
-  transition: all 0.3s;
-}
-
-.switch-color-btn:hover {
-  background: var(--color-background-soft);
-  border-color: var(--color-border-hover);
 }
 </style>
